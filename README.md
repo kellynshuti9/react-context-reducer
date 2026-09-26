@@ -1,32 +1,36 @@
-# React + TypeScript + Vite
+# React Context & Reducer App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Week 4 Guided Learning Activity — useContext and useReducer with TypeScript.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Theme Switcher (light/dark) via React Context API
+- Task Manager (add/remove) via useReducer with typed actions
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React 18 · TypeScript · Vite
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+npm install
+npm run dev
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+Open http://localhost:5173
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Structure
+
+src/
+├── components/   ThemeToggle, TaskManager
+├── context/      ThemeContext
+├── reducers/     taskReducer
+├── styles/       global.css
+├── App.tsx
+└── main.tsx
+
+## How it works
+
+- ThemeContext exposes { theme, toggleTheme } plus a useTheme() hook
+  that throws if used outside the provider.
+- taskReducer handles ADD_TASK and REMOVE_TASK with a discriminated
+  union and an exhaustiveness check via `never`.
