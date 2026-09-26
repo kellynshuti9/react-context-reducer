@@ -31,8 +31,7 @@ export function taskReducer(state: TaskState, action: TaskAction): TaskState {
       };
     }
     default: {
-      const _exhaustive: never = action;
-      return state;
-    }
+  return state;
+}
   }
 }
